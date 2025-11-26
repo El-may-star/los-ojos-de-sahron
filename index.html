@@ -1,34 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Los Ojos de Sahron — Página Estrellada</title>
-  <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8">
+    <title>Ojo Realista</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="starfield"></canvas>
 
-  <main class="stage" aria-label="Escena con ojos humanos sobre fondo estrellado">
-    <div class="eyes">
-      <div class="eye" id="eye-left" aria-hidden="false">
-        <!-- Reemplaza estas imágenes por fotos tuyas para más realismo -->
-        <img class="eye-img" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=900&q=80" alt="Ojo humano izquierdo" />
-        <div class="pupil"></div>
-        <div class="glint"></div>
-      </div>
-
-      <div class="eye" id="eye-right" aria-hidden="false">
-        <img class="eye-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80" alt="Ojo humano derecho" />
-        <div class="pupil"></div>
-        <div class="glint"></div>
-      </div>
+<div class="eye-container">
+    <div class="eye">
+        <div class="iris">
+            <div class="pupil"></div>
+            <div class="reflection"></div>
+        </div>
     </div>
+</div>
 
-    <h1 class="title">Los Ojos de Sahron</h1>
-    <p class="subtitle">Mira al cielo. Mira dentro.</p>
-  </main>
+<script src="script.js"></script>
 
-  <script src="js/main.js"></script>
 </body>
 </html>
