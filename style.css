@@ -1,131 +1,80 @@
-/* Reset y layout básico */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html,body { height: 100%; width: 100%; background: #000; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #fff; }
-
-#starfield {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  z-index: 0;
-  background: radial-gradient(ellipse at center, rgba(10,10,20,0.6), rgba(0,0,0,1));
+body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-/* Contenedor principal */
-.stage {
-  position: relative;
-  z-index: 2;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  pointer-events: none; /* para que canvas reciba el puntero */
-  padding: 3rem 1rem;
+/* contenedor del ojo */
+.eye-container {
+    transform: scale(1.5);
 }
 
-/* Título */
-.title {
-  font-size: 2rem;
-  letter-spacing: 0.06em;
-  text-shadow: 0 8px 30px rgba(0,0,0,0.7);
-  pointer-events: none;
-}
-.subtitle { opacity: 0.85; font-size: 1rem; margin-top: 0.25rem; }
-
-/* Contenedor de ojos */
-.eyes {
-  display: flex;
-  gap: 3.5rem;
-  align-items: center;
-  justify-content: center;
-  pointer-events: auto; /* para detectar movimiento sobre ojos */
-}
-
-/* Cada ojo */
+/* Parte blanca del ojo */
 .eye {
-  position: relative;
-  width: clamp(160px, 22vw, 300px);
-  height: clamp(160px, 22vw, 300px);
-  border-radius: 50%;
-  overflow: hidden;
-  background: radial-gradient(closest-side, #111 60%, #000 100%);
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.7),
-    inset 0 8px 30px rgba(255,255,255,0.02);
-  transform: translateZ(0);
-  transition: transform 300ms ease;
+    width: 300px;
+    height: 180px;
+    background: radial-gradient(circle, #ffffff 60%, #d6d6d6 90%);
+    border-radius: 200px/120px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 6px solid #000;
 }
 
-/* Imagen del ojo (iris + esclerótica) */
-.eye-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(1.05) contrast(1.02);
-  transform-origin: center;
-  display: block;
-  backface-visibility: hidden;
+/* IRIS */
+.iris {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    position: relative;
+    background: radial-gradient(circle,
+        #e2a34d 10%,
+        #b37532 40%,
+        #6d3f12 70%,
+        #3a2008 95%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s linear;
 }
 
-/* Pupila (movible) */
+/* Textura del iris */
+.iris::before {
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(
+        #00000010 0deg 10deg,
+        transparent 10deg 20deg
+    );
+    mix-blend-mode: overlay;
+}
+
+/* Pupila */
 .pupil {
-  position: absolute;
-  width: 28%;
-  height: 28%;
-  left: 36%;
-  top: 36%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle at 40% 35%, #000 0%, #000 60%, rgba(0,0,0,0.9) 100%);
-  border-radius: 50%;
-  z-index: 4;
-  pointer-events: none;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.7), inset 0 2px 6px rgba(255,255,255,0.02);
-  transition: width 120ms ease, height 120ms ease;
+    width: 45px;
+    height: 45px;
+    background: black;
+    border-radius: 50%;
+    z-index: 5;
 }
 
-/* Brillo/glint para dar realismo */
-.glint {
-  position: absolute;
-  width: 32%;
-  height: 32%;
-  right: 18%;
-  top: 14%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.35) 20%, rgba(255,255,255,0) 60%);
-  border-radius: 50%;
-  mix-blend-mode: screen;
-  z-index: 5;
-  pointer-events: none;
-  filter: blur(1.2px);
-  opacity: 0.95;
-}
-
-/* Parpadeo (se activa con JS) */
-.eye.blink::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(#000, #000);
-  transform-origin: center;
-  animation: blink 220ms linear forwards;
-  z-index: 10;
-  pointer-events: none;
-}
-
-@keyframes blink {
-  0% { transform: scaleY(0); opacity: 0; }
-  20% { transform: scaleY(1); opacity: 1; }
-  60% { transform: scaleY(1); opacity: 1; }
-  100% { transform: scaleY(0); opacity: 0; }
-}
-
-/* Responsivo */
-@media (max-width: 640px) {
-  .eyes { gap: 1.5rem; }
-  .title { font-size: 1.5rem; }
+/* Brillo del ojo */
+.reflection {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, .8);
+    border-radius: 50%;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    filter: blur(2px);
 }
