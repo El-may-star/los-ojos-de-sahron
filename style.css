@@ -1,66 +1,90 @@
 body {
-    background: #f0f0f0;
-    margin: 0;
-    height: 100vh;
+    background: #e2dedb;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .face {
     display: flex;
-    gap: 80px;
+    gap: 120px;
 }
 
+/* Forma del ojo (más realista, almendrada) */
 .eye {
     position: relative;
-    width: 150px;
-    height: 150px;
-    background: white;
-    border-radius: 50%;
-    border: 6px solid black;
+}
+
+.eye-shape {
+    width: 180px;
+    height: 100px;
+    background: #ffffff;
+    border-radius: 90px / 45px;
+    border: 4px solid #000;
+    overflow: hidden;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
-/* Ceja */
+/* Cejas más naturales */
 .brow {
     position: absolute;
-    top: -35px;
-    width: 140px;
-    height: 40px;
-    background: black;
-    border-radius: 50%;
+    top: -40px;
+    width: 180px;
+    height: 35px;
+    background: #2e1f0f;
+    border-radius: 70% 30% 0 0;
+    transform: rotate(-4deg);
 }
 
-/* Pestañas */
+/* Pestañas más largas */
 .lashes {
     position: absolute;
-    top: -10px;
+    top: 0;
     width: 100%;
     height: 25px;
-    border-top: 6px solid black;
-    border-radius: 50%;
+    border-top: 6px solid #000;
+    border-radius: 80% 80% 0 0;
 }
 
-/* Iris café */
+/* Iris café con degradados realistas */
 .iris {
     width: 90px;
     height: 90px;
-    background: #8b4513; /* Café */
+    background: radial-gradient(circle, 
+        #8b4513 20%, 
+        #5a2c0c 60%, 
+        #3d1e08 85%
+    );
     border-radius: 50%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
 
 /* Pupila negra */
 .pupil {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     background: black;
     border-radius: 50%;
+    z-index: 2;
+}
+
+/* Brillo/Reflejo en el ojo */
+.light {
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 18px;
+    left: 22px;
+    opacity: 0.8;
+    z-index: 3;
 }
