@@ -1,40 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ojos Realistas</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Los Ojos de Sahron — Página Estrellada</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <canvas id="starfield"></canvas>
 
-<div class="face">
-    <div class="eye">
-        <div class="brow"></div>
-        <div class="lashes"></div>
+  <main class="stage" aria-label="Escena con ojos humanos sobre fondo estrellado">
+    <div class="eyes">
+      <div class="eye" id="eye-left" aria-hidden="false">
+        <!-- Reemplaza estas imágenes por fotos tuyas para más realismo -->
+        <img class="eye-img" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=900&q=80" alt="Ojo humano izquierdo" />
+        <div class="pupil"></div>
+        <div class="glint"></div>
+      </div>
 
-        <div class="eye-shape">
-            <div class="iris">
-                <div class="pupil"></div>
-                <div class="light"></div>
-            </div>
-        </div>
+      <div class="eye" id="eye-right" aria-hidden="false">
+        <img class="eye-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80" alt="Ojo humano derecho" />
+        <div class="pupil"></div>
+        <div class="glint"></div>
+      </div>
     </div>
 
-    <div class="eye">
-        <div class="brow"></div>
-        <div class="lashes"></div>
+    <h1 class="title">Los Ojos de Sahron</h1>
+    <p class="subtitle">Mira al cielo. Mira dentro.</p>
+  </main>
 
-        <div class="eye-shape">
-            <div class="iris">
-                <div class="pupil"></div>
-                <div class="light"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="script.js"></script>
-
+  <script src="js/main.js"></script>
 </body>
 </html>
