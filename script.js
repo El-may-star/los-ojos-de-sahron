@@ -2,15 +2,14 @@ document.addEventListener("mousemove", (event) => {
     const irises = document.querySelectorAll(".iris");
 
     irises.forEach((iris) => {
-        const eye = iris.parentElement;
-        const rect = eye.getBoundingClientRect();
+        const rect = iris.parentElement.getBoundingClientRect();
 
-        const eyeCenterX = rect.left + rect.width / 2;
-        const eyeCenterY = rect.top + rect.height / 2;
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
 
-        const angle = Math.atan2(event.clientY - eyeCenterY, event.clientX - eyeCenterX);
+        const angle = Math.atan2(event.clientY - centerY, event.clientX - centerX);
 
-        const maxMove = 25;
+        const maxMove = 25; // rango natural
 
         const x = Math.cos(angle) * maxMove;
         const y = Math.sin(angle) * maxMove;
